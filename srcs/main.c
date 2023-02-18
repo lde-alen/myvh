@@ -6,8 +6,16 @@
 /*   By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 10:20:02 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/02/12 10:20:13 by lde-alen         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:17:09 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
+
+int	main(int ac, char **av)
+{
+	(void)ac;
+	(void)av;
+	printf("test\n");
+	return (0);
+}

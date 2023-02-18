@@ -6,7 +6,7 @@
 #    By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/12 08:48:30 by lde-alen          #+#    #+#              #
-#    Updated: 2023/02/12 09:55:46 by lde-alen         ###   ########.fr        #
+#    Updated: 2023/02/18 18:15:33 by lde-alen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,41 +24,43 @@ SRCS_DIR		=		srcs/
 LIBFT_NAME		=		libft.a
 MLX_NAME		=		libmlx.a
 
+OBJS			=		$(SRCS:.c=.o)
+
 ## Files
-SRCS			=		main.c
+SRCS			=		srcs/main.c
 
 
 ## Runs uname command on the terminal in order to determine the OS ##
 UNAME 			:=		$(shell uname)
 
 ## Flags
-FLAGS			=		-Wall -Wextra -Werror -g3 -0fast
+FLAGS			=		-Wall -Wextra -Werror -g3
 ## If the OS is Linux, then the MLX library is compiled with the following flags
 ## otherwise, it is compiled with the MacOS flags
 ifeq ($(UNAME),Linux)
-	MLX_COMPIL	=		-L $(MLX_DIR) -lm -lXext -lX11 -Ofast
+	MLX_COMPIL	=		-L $(MLX_DIR) -lm -lXext -lX11
 else
-	MLX_COMPIL	=		-L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit -Ofast
+	MLX_COMPIL	=		-L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
 endif
 
 ## Path to Includes folder
-INCLUDES		+=		-I./includes/
+INCLUDES		=		-I./includes
 
 ## Quality of life and dopamine
 RM				=		rm -f
 CC				=		gcc
 
+
+
 ## Transforms .c into .o
 .c.o			:
-						$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+						$(CC) $(FLAGS) $(INCLUDES) -c $< -o $(<:.c=.o)
 
 ## 
 $(NAME)			:		$(OBJS)
-						$(MAKE) -C ./libft
-						$(MAKE) -C $(MLX)
-						$(CC) $(MLX_COMPIL) $(FLAGS) $(OBJS) $(MLX)/$(MLX_NAME) $(LIBFT_DIR)/$(LIBFT_NAME) -o $(NAME)
-						mkdir -p $(OBJS_DIR_N)
-						mv $(OBJS) $(OBJS_DIR)
+						@$(MAKE) -C ./libft
+						@$(MAKE) -C $(MLX_DIR)
+						@$(CC) $(MLX_COMPIL) $(FLAGS) $(INCLUDES) $(OBJS) $(MLX_DIR)/$(MLX_NAME) $(LIBFT_DIR)/$(LIBFT_NAME) -o $(NAME)
 
 ## Calls Name
 all				:		$(NAME)
@@ -66,14 +68,11 @@ all				:		$(NAME)
 ## Removes all .o files
 clean			:
 						$(MAKE) clean -C $(LIBFT_DIR)
-						$(MAKE) clean -C $(MLX)
-						$(RM) -r $(OBJS_DIR)/
+						$(MAKE) clean -C $(MLX_DIR)
+						rm -rf $(OBJS)	
 
 ## Removes all .o files and the executable
 fclean			:		clean
-						$(MAKE) fclean -C $(LIBFT_DIR)
-						$(RM) $(NAME)
-						$(RM) $(LIBFT_DIR)/$(LIBFT_NAME)
-						$(RM) $(MLX)/$(MLX_NAME)
+						rm -rf $(NAME)
 ## Calls fclean and all
 re				:		fclean all
