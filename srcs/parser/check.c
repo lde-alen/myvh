@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42abudhab       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 10:20:02 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/02/18 20:47:19 by lde-alen         ###   ########.fr       */
+/*   Created: 2023/02/18 20:24:08 by lde-alen          #+#    #+#             */
+/*   Updated: 2023/02/18 20:47:24 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+static void 
+
+int	ft_check_map(char *map)
 {
-	if (ac != 2)
-		return (ft_putstrfd("Error: Invalid amount of arguments./n"));
-	if (ft_check_map(av[1]))
+	//check for .cubi 
+	check_ext(map);
+	//
+	//check if file exists
+	//check if is empty
 	return (0);
 }

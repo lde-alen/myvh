@@ -6,7 +6,7 @@
 #    By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/12 08:48:30 by lde-alen          #+#    #+#              #
-#    Updated: 2023/02/18 18:15:33 by lde-alen         ###   ########.fr        #
+#    Updated: 2023/02/18 20:27:44 by lde-alen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ MLX_NAME		=		libmlx.a
 OBJS			=		$(SRCS:.c=.o)
 
 ## Files
-SRCS			=		srcs/main.c
+SRCS			=		srcs/main.c			\
+						srcs/parser/check.c	\
+
 
 
 ## Runs uname command on the terminal in order to determine the OS ##
@@ -35,6 +37,7 @@ UNAME 			:=		$(shell uname)
 
 ## Flags
 FLAGS			=		-Wall -Wextra -Werror -g3
+
 ## If the OS is Linux, then the MLX library is compiled with the following flags
 ## otherwise, it is compiled with the MacOS flags
 ifeq ($(UNAME),Linux)
