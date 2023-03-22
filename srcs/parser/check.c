@@ -6,7 +6,7 @@
 /*   By: lde-alen <lde-alen@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 20:24:08 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/03/22 07:09:50 by lde-alen         ###   ########.fr       */
+/*   Updated: 2023/03/22 07:47:45 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*read_file(char *name)
 	int		fd;
 
 	fd = open(name, O_RDONLY);
-	ret = ft_strdup("a");
-	tmp = ft_strdup("");
 	if (fd < 0)
 		return (ft_putstr_fd("Error: Invalid file.\n", 2), NULL);
+	ret = ft_strdup("start");
+	tmp = ft_strdup("");
 	while (ret != NULL)
 	{
 		ret = get_next_line(fd);
@@ -47,13 +47,17 @@ char	*read_file(char *name)
 int	ft_check_map(char *map_name)
 {
 	char	*file;
-	// char	*buff;
+	int		ret;
 
+	ret = 0;
 	check_ext(map_name);
 	file = read_file(map_name);
 	if (!file)
 		return (free(file), ft_putstr_fd("Error: Invalid file.\n", 2), 1);
+	// to parse the file for errors
+	// check and save respective data required
 	ft_putstr_fd(file, 1);
-	
+	if (ret == 1)
+		return (free(file), ft_putstr_fd("Error: Invalid Map.\n", 2), 1);
 	return (0);
 }
