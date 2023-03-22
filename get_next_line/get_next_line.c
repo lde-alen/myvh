@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-alen <lde-alen@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 13:15:39 by lde-alen          #+#    #+#             */
-/*   Updated: 2021/12/23 13:15:45 by lde-alen         ###   ########.fr       */
+/*   Updated: 2023/03/22 06:00:27 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+#define BUFFER_SIZE 1024
 
 static void	ft_ini(int *i, int *j)
 {
@@ -109,6 +111,7 @@ char	*get_next_line(int fd)
 {
 	static char	*str;
 	char		*line;
+
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

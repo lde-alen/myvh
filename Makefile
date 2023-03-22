@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+         #
+#    By: lde-alen <lde-alen@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/12 08:48:30 by lde-alen          #+#    #+#              #
-#    Updated: 2023/02/18 20:27:44 by lde-alen         ###   ########.fr        #
+#    Updated: 2023/03/22 06:03:51 by lde-alen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,11 @@ MLX_NAME		=		libmlx.a
 OBJS			=		$(SRCS:.c=.o)
 
 ## Files
-SRCS			=		srcs/main.c			\
-						srcs/parser/check.c	\
+SRCS			=		get_next_line/get_next_line.c			\
+						get_next_line/get_next_line_utils.c		\
+						srcs/main.c								\
+						srcs/parser/check.c						\
+
 
 
 
@@ -40,11 +43,11 @@ FLAGS			=		-Wall -Wextra -Werror -g3
 
 ## If the OS is Linux, then the MLX library is compiled with the following flags
 ## otherwise, it is compiled with the MacOS flags
-ifeq ($(UNAME),Linux)
-	MLX_COMPIL	=		-L $(MLX_DIR) -lm -lXext -lX11
-else
-	MLX_COMPIL	=		-L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
-endif
+# ifeq ($(UNAME),Linux)
+# 	MLX_COMPIL	=		-L $(MLX_DIR) -lm -lXext -lX11
+# else
+# 	MLX_COMPIL	=		-L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
+# endif
 
 ## Path to Includes folder
 INCLUDES		=		-I./includes
@@ -62,8 +65,7 @@ CC				=		gcc
 ## 
 $(NAME)			:		$(OBJS)
 						@$(MAKE) -C ./libft
-						@$(MAKE) -C $(MLX_DIR)
-						@$(CC) $(MLX_COMPIL) $(FLAGS) $(INCLUDES) $(OBJS) $(MLX_DIR)/$(MLX_NAME) $(LIBFT_DIR)/$(LIBFT_NAME) -o $(NAME)
+						@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) $(LIBFT_DIR)/$(LIBFT_NAME) -o $(NAME)
 
 ## Calls Name
 all				:		$(NAME)
@@ -71,7 +73,6 @@ all				:		$(NAME)
 ## Removes all .o files
 clean			:
 						$(MAKE) clean -C $(LIBFT_DIR)
-						$(MAKE) clean -C $(MLX_DIR)
 						rm -rf $(OBJS)	
 
 ## Removes all .o files and the executable

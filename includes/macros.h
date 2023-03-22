@@ -3,10 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-alen <lde-alen@student.42abudhabi.fr>  +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 10:17:03 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/02/12 10:17:13 by lde-alen         ###   ########.fr       */
+/*   Updated: 2023/03/22 05:59:39 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MACROS_H
+# define MACROS_H
+
+# define BUFFER_SIZE 1024
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: lde-alen <lde-alen@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 13:15:50 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/02/18 18:14:41 by lde-alen         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:15:57 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ char	*get_next_line(int fd);
 char	*ft_red_next(int fd, char *str);
 char	*get_line(char *str);
 char	*ft_newstr(char *str);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *str, char *buffer);
+size_t	ft_strlen(char *str);
 
 #endif
