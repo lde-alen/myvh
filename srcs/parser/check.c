@@ -6,7 +6,7 @@
 /*   By: lde-alen <lde-alen@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 20:24:08 by lde-alen          #+#    #+#             */
-/*   Updated: 2023/03/22 07:47:45 by lde-alen         ###   ########.fr       */
+/*   Updated: 2023/03/22 08:37:09 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*read_file(char *name)
 	return (tmp);
 }
 
-int	ft_check_map(char *map_name)
+int	ft_check_file(char *map_name)
 {
 	char	*file;
 	int		ret;
@@ -54,10 +54,10 @@ int	ft_check_map(char *map_name)
 	file = read_file(map_name);
 	if (!file)
 		return (free(file), ft_putstr_fd("Error: Invalid file.\n", 2), 1);
-	// to parse the file for errors
-	// check and save respective data required
-	ft_putstr_fd(file, 1);
-	if (ret == 1)
+	else if (check_textures(file) == 1 || check_colors(file) == 1 || check_map(file) == 1) // to code
+		return (free(file), ft_putstr_fd("Error: Invalid textures.\n", 2), 1);
+	else if (ret == 1)
 		return (free(file), ft_putstr_fd("Error: Invalid Map.\n", 2), 1);
-	return (0);
+	else
+		return (0);
 }
